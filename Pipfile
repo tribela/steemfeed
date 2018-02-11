@@ -1,0 +1,19 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+pyatom = "*"
+flask = "*"
+steem = "*"
+py-gfm = "*"
+uwsgi = "*"
+
+
+[dev-packages]
+
+honcho = "*"
