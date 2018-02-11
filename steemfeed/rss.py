@@ -7,6 +7,9 @@ import steem
 from mdx_gfm import GithubFlavoredMarkdownExtension
 
 md = markdown.Markdown(extensions=[GithubFlavoredMarkdownExtension()])
+steemd_nodes = [
+    'https://gtg.steem.house:8090',
+]
 
 
 def make_feed(userid):
@@ -16,7 +19,7 @@ def make_feed(userid):
         url=f'https://steemit.com/@{userid}',
         author=userid)
 
-    s = steem.Steem()
+    s = steem.Steem(nodes=steemd_nodes)
 
     for post in s.get_discussions_by_blog({'tag': userid, 'limit': 10}):
         feed.add(
