@@ -12,6 +12,7 @@ flask = "*"
 steem = "*"
 py-gfm = "*"
 uwsgi = "*"
+cache-expire = "*"
 
 
 [dev-packages]

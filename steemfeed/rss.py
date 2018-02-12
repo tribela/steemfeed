@@ -4,6 +4,7 @@ import markdown
 import pyatom
 import steem
 
+from cache_expire import cache_with_timeout
 from mdx_gfm import GithubFlavoredMarkdownExtension
 
 md = markdown.Markdown(extensions=[GithubFlavoredMarkdownExtension()])
@@ -12,6 +13,7 @@ steemd_nodes = [
 ]
 
 
+@cache_with_timeout(60)
 def make_feed(userid):
 
     feed = pyatom.AtomFeed(
