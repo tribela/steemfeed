@@ -14,9 +14,17 @@ md = markdown.Markdown(extensions=[GithubFlavoredMarkdownExtension()])
 @cache_with_timeout(60)
 def make_feed(userid):
 
-    s = steem.Steem()
-    account = s.get_account(userid)
-    profile = json.loads(account['json_metadata'])['profile']
+    for _ in range(3):
+        try:
+            s = steem.Steem()
+            account = s.get_account(userid)
+            profile = json.loads(account['json_metadata'])['profile']
+        except Exception as e:
+            error = e
+        else:
+            break
+    else:
+        raise error
 
     feed = pyatom.AtomFeed(
         author=profile.get('name', userid),
