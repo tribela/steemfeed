@@ -13,6 +13,7 @@ steem = "*"
 py-gfm = "*"
 uwsgi = "*"
 cache-expire = "*"
+raven = {extras = ["flask"]}
 
 
 [dev-packages]
